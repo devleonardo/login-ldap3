@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,700;1,300&display=swap');
+
+body {
+  background: url(/static/bg.jpg);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 20px;
+}
+
+#banner{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content:space-evenly;
+  background-color: #002e23;
+  height: 150px;
+  padding: 0 100px 0 100px;
+  text-align: center;
+  z-index: 10;
+}
+
+img{
+  width: 150px;
+  margin-top: -30px;
+}
+
+form {
+  margin-top: -30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#title{
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #ffffff;
+  margin-right: 20px;
+}
+
+#aviso{
+  margin-top: -28px !important;
+  text-align: center;
+  border: none;
+}
+
+input[type="text"] {
+  width: 400px;
+}
+
+input[type="submit"] {
+  border-radius: 5px;
+  margin-left: 10px;
+  height: 58px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #009373;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container{
+  width: 800px;
+  margin: 0 auto !important;
+}
+
+
+ul {
+  list-style: none;
+}
+
+li {
+  border: none;
+}
+
+sucesso{
+  color: #009373;
+  font-weight: 700;
+}
+falha{
+  color: #ff0000;
+  font-weight: 700;
+}
+timeout{
+  color: #ca880c;
+  font-weight: 700;
+}
+errodns{
+  color: #ca610c;
+  font-weight: 700;
+}
+sem{
+  color: #000000;
+  font-weight: 700;
+}
+ping{
+  color: #009373;
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.ping{
+  padding: 10px 0;
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #64f7d7;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+vfinal{
+  font-size: 40px;
+  font-weight: bold;
+  color: #fff;
+}
