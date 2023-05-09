@@ -8,7 +8,6 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 20px;
 }
-
 #banner{
   display: flex;
   flex-wrap: wrap;
@@ -20,18 +19,15 @@ body {
   text-align: center;
   z-index: 10;
 }
-
 img{
   width: 150px;
   margin-top: -30px;
 }
-
 form {
   margin-top: -30px;
   display: flex;
   flex-wrap: wrap;
 }
-
 #title{
   font-size: 20px;
   text-transform: uppercase;
@@ -39,17 +35,14 @@ form {
   color: #ffffff;
   margin-right: 20px;
 }
-
 #aviso{
   margin-top: -28px !important;
   text-align: center;
   border: none;
 }
-
 input[type="text"] {
   width: 400px;
 }
-
 input[type="submit"] {
   border-radius: 5px;
   margin-left: 10px;
@@ -62,21 +55,16 @@ input[type="submit"] {
   font-weight: bold;
   cursor: pointer;
 }
-
 .container{
   width: 800px;
   margin: 0 auto !important;
 }
-
-
 ul {
   list-style: none;
 }
-
 li {
   border: none;
 }
-
 sucesso{
   color: #009373;
   font-weight: 700;
@@ -103,7 +91,6 @@ ping{
   font-size: 15px;
   letter-spacing: 1px;
 }
-
 .ping{
   padding: 10px 0;
   color: white;
@@ -115,7 +102,6 @@ ping{
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 vfinal{
   font-size: 40px;
   font-weight: bold;
