@@ -12,6 +12,8 @@ def dashboard():
     # chega se o usuário esta logado, caso contrario, retorna a pagina de login
     if not session.get('logged_in'):
         return render_template('login.html')
+    # Get the username from the session
+    username = session.get('username')
     # caso logado, renderiza a pagina dashboard
     return render_template('dashboard.html')
 
@@ -38,6 +40,10 @@ def resolve_domain():
     # verificar se o uruario esta logado
     if not session.get('logged_in'):
         return redirect(url_for('rdns.login'))
+    
+    # Get the username from the session
+    username = session.get('username')
+
     
     # recebe o domínio digitado no input do front
     domain = request.form['domain']

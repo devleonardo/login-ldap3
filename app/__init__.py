@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint, session
-from ldap3 import Server, Connection, SIMPLE, ALL
+from ldap3 import Server, Connection, SIMPLE, ALL, Attribute, MODIFY_REPLACE
 from app.config import *
 from flask_session import Session
 
@@ -27,17 +27,46 @@ def ldap_authenticate(username, password):
         conn = Connection(server, user=entry.entry_dn, password=password, authentication=SIMPLE)
         if conn.bind():
             # A autenticação foi bem sucedida
+            # Faz uma busca LDAP para obter os atributos da entrada do usuário
+            conn.search(entry.entry_dn,
+                        '(objectclass=*)',
+                        attributes=['mail', 'displayName', 'description', 'givenName', 'userPrincipalName']
+            )
+
+            print(conn.password)
+
+            if conn.entries:
+                user_attributes = conn.entries[0].entry_attributes_as_dict
+                # Lista de atributos
+                first_name = user_attributes.get('givenName', [''])[0]
+                user_id = user_attributes.get('userPrincipalName', [''])[0]
+                displayName = user_attributes.get('displayName', [''])[0]
+                description = user_attributes.get('description', [''])[0]
+                mail = user_attributes.get('mail', [''])[0]
+                # Filtrando dados
+                userName = user_id.split('@')[0]
+                domain = user_id.split('@')[1]
+                # Armazene o primeiro nome do usuário na sessão
+                session['first_name'] = first_name
+                session['userName'] = userName
+                session['displayName'] = displayName
+                session['description'] = description
+                session['mail'] = mail
+                session['domain'] = domain
+            # A autenticação foi bem sucedida
+            # Exibir todas as informações do usuário
             return True
     # A autenticação falhou
     return False
 
 @app.route('/login', methods=['GET', 'POST'])
-
 def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         if ldap_authenticate(username, password):
+            # Store the username in the session
+            session['username'] = username
             # guarda a sessão do usuario quando logado
             session['logged_in'] = True
             return redirect(url_for('rdns.dashboard'))
@@ -52,9 +81,16 @@ def login():
 @app.route('/login')
 def index():
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    # Remove the 'logged_in' key from the session
+    session.pop('logged_in', None)
+    return render_template('login.html')
+
     
 if __name__ == '__main__':
-    app.run('0.0.0.0')
+    app.run(debug=True)
 
 # Importa e registra o blueprint rdns
 from app.rdns import app as rdns_app

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Painel de Controle</title>
+</head>
+<body>
+    <h1>Painel de Controle</h1>
+
+    <h2>Pesquisar Usuário</h2>
+    <form action="/search" method="POST">
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username">
+        <input type="submit" value="Pesquisar">
+    </form>
+
+    <h2>Adicionar Usuário</h2>
+    <form action="/add" method="POST">
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" id="username" name="username"><br>
+        <label for="forename">Nome:</label>
+        <input type="text" id="forename" name="forename"><br>
+        <label for="surname">Sobrenome:</label>
+        <input type="text" id="surname" name="surname"><br>
+        <label for="new_password">Nova Senha:</label>
+        <input type="password" id="new_password" name="new_password"><br>
+        <input type="submit" value="Adicionar">
+    </form>
+</body>
+</html>
