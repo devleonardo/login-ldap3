@@ -1,5 +1,8 @@
 
 # Autenticação via LDAP
+#### O Sistema tem por objetivo, autenticar e permitir acesso aos dados do Ative Directory com autenticação via LDAP, liberando assim os usuários do servidor.
+#### Além da função de teste de DNS que somente os usuarios conectados terão acesso, o sistema agora conta também com a função de busca de usuários, onde até o momento é possível visualizar usuários listados na busca, assim como abrir uma página de cada usuário onde será exibido informações mais detalhadas, como os grupos no qual o usuario faz parte dentro do controlador de domínio.
+
 ### Tela de login em Python com Flask e autenticação via ldap.
 - **Biblioteca:** ldap3
 
