@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- ########################################################################################################################################## -->
+<!-- BARRA DE BEM VINDO E INPUT DE TESTES DE DNS -->
+    <section id="bar">
+        <div class="container banner">
+            <div id="user">
+                    <h2>Consulta de usuários no <b class="name">AD</b></h2>
+            </div>
+            <div id="consulta">
+                <form method="POST" class="form-floating" action="{{ url_for('busca.search_users') }}">
+                    <input type="text" class="form-control" id="floatingInputValue" id="meuInput" name="search_query" placeholder="www.google.com.br" required>
+                    <label for="floatingInputValue">Nome do usuário</label>
+                    <input type="submit" value="Buscar">
+                </form>
+            </div>
+        </div>
+    </section>
+    <div id="aviso" class="alert alert-light container" role="alert">
+        <strong>Para buscar um usuário digite: </strong> nome do usuario, primeiro nome, nome completo ou e-mail.
+        <br>
+        <strong>Observação:</strong> Ao digita o primeiro nome será listado todos os usuários correspondentes.
+    </div>
+    <!-- Search Results -->
+    {% if search_results %}
+        <section id="userSearch">
+            <div class="listagem container">
+                <table id="searchResult">
+                    <caption>Lista de usuários correspondentes</caption>
+                    <tr class="titulo">
+                        <th scope="col"><i class="bi bi-person"></i> Nome de usuário</th>
+                        <th scope="col"><i class="bi bi-person-add"></i> Nome completo</th>
+                        <th scope="col"><i class="bi bi-body-text"></i> Descrição</th>
+                        <th scope="col"><i class="bi bi-envelope"></i> Email</th>
+                    </tr>
+                    {% for result in search_results %}
+                        <tr class="buscados">
+                            <td><a href="{{ url_for('busca.user_details', username=result[0]) }}"><i class="bi bi-gear-fill"></i> {{ result[0] }}</a></td>
+                            <td>{{ result[1] }}</td>
+                            <td>{{ result[2] }}</td>
+                            <td>{{ result[3] }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

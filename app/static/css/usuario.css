@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+body {
+  background: url(/static/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif !important;
+  line-height: 20px;
+  background-color: #002019;
+}
+
+.container{
+  width: 800px;
+  margin: 0 auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* ########################################################################################################################## */
+/* INICIO DA BARRA LATERAL */
+#offcanvasDarkNavbar{
+  padding-right: 20px;
+}
+.painel li span{
+  font-weight: bold;
+  color: #64f7d7;
+}
+.grupo{
+  color: #ffffff !important;
+  font-weight: 400 !important;
+  background-color: #101114;
+  padding: 2px 5px !important;
+  border-radius: 5px;
+  margin: 3px 1px;
+}
+.navbar i{
+  color: #64f7d7;
+  font-size: 40px;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+}
+.navbar i:hover{
+  color: #ffffff;
+}
+.exit{
+  margin-left: 30px;
+}
+.exit li i{
+  margin-right: 10px;
+  color: #64f7d7;
+  font-size: 19px;
+  padding: 0;
+}
+.offcanvas-title i{
+  font-size: 20px;
+}
+.logout a{
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.5s;
+}
+.logout a:hover{
+  color: #64f7d7;
+  transition: 0.5s;
+}
+/* FINAL DA BARRA LATERAL */
+
+/* ########################################################################################################################## */
+
+/* INICIO DA BARRA DE NAVEGAÇÃO */
+#navbar{
+  width: 100%;
+  background-color: #16453e;
+  padding: 0;
+  position: fixed;
+  z-index: 10;
+  margin-top: -52px;
+  border-bottom: 2px solid #64f7d7;
+}
+nav{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}
+.navbar{
+  padding: 0 !important;
+}
+.logo img{
+  width: 80px;
+  margin: 0;
+}
+#menu{
+  margin: 0;
+  margin-right: -12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#menu li{
+  display: inline !important;
+  padding: 5px;
+}
+#menu a{
+  color: #fff !important;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+#menu li a i{
+  font-size: 18px;
+  margin-right: 8px;
+}
+#menu li a i:hover{
+  color: #64f7d7;
+}
+#menu a:hover{
+  color: #64f7d7 !important;
+}
+/* FINAL DA BARRA DE NAVEGAÇÃO */
+/* INICIO DA BARRA DE PESQUISA */
+#user h1{
+    color: #fff;
+    font-size: 40px;
+    margin: 0;
+}
+#user h1 i{
+    color: #64f7d7;
+}
+.name {
+    color: #64f7d7;
+}
+#bar {
+    width: 100%;
+    background-color: #002019;
+    margin-top: 44px;
+}
+.banner{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-between;
+    height: 150px;
+    text-align: center;
+    z-index: 10;
+    margin-top: 52px !important;
+}
+/* FINAL DA BARRA DE PESQUISA */
+#card{
+    margin: 44px 0 auto;
+}
+#info {
+    background-color: #fff;
+    padding: 30px !important;
+    border-radius: 10px;
+}
+#info label{
+    margin-bottom: 5px !important;
+    font-weight: bold;
+    color: #002019;
+}
+#info input{
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 5px 10px !important;
+    border-radius: 5px;
+    color: #8f8f8f;
+}
+#info input:enabled{
+  background-color: #ffffff;
+  color: #101114;
+}
+#info ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start !important;
+    padding: 0;
+}
+#info ul li{
+    margin-right: 6px;
+    padding: 3px 10px !important;
+    background-color: #101114;
+    border-radius: 5px;
+    margin-bottom: 5px ;
+    color: #fff;
+}
+#editar, #salvar, #resetar{
+    padding: 5px;
+    width: 200px;
+    height: 45px;
+    margin-right: 5px;
+}
+/* Estilos do modal */
+.modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 30px;
+    border: none;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#myModal, #myModalReset button{
+    padding: 5px;
+    width: 200px;
+    height: 45px;
+    margin: 5px;
+}
+
+#botaoModal{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}

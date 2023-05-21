@@ -45,3 +45,54 @@ function loadLoginData() {
 
 // Chama a função para carregar os dados de login quando a página é carregada
 window.onload = loadLoginData;
+
+document.getElementById('editar').onclick = function() {
+    var inputs = document.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].disabled = false;
+    }
+}
+
+// Elementos do modal
+var modal = document.getElementById('myModal');
+var openModalBtn = document.getElementById('salvar');
+var confirmBtn = document.getElementById('confirmBtn');
+var cancelBtn = document.getElementById('cancelBtn');
+
+// Função para abrir o modal
+function openModal() {
+    modal.style.display = 'block';
+}
+
+// Função para fechar o modal
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+// Eventos de clique nos botões
+openModalBtn.addEventListener('click', openModal);
+confirmBtn.addEventListener('click', closeModal);
+cancelBtn.addEventListener('click', closeModal);
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Elementos do modal Senha
+var modalReset = document.getElementById('myModalReset');
+var openModalBtnReset = document.getElementById('resetar');
+var confirmBtnReset = document.getElementById('confirmBtnReset');
+var cancelBtnReset = document.getElementById('cancelBtnReset');
+
+// Função para abrir o modal
+function openModal() {
+    modalReset.style.display = 'block';
+}
+
+// Função para fechar o modal
+function closeModal() {
+    modalReset.style.display = 'none';
+}
+
+// Eventos de clique nos botões
+openModalBtnReset.addEventListener('click', openModal);
+confirmBtnReset.addEventListener('click', closeModal);
+cancelBtnReset.addEventListener('click', closeModal);

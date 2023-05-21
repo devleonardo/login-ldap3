@@ -6,6 +6,8 @@ from os import system
 
 app = Blueprint('rdns', __name__)
 
+app.secret_key = '{LDAP_USER_PASSWORD}'
+
 # renderiza a pagina html
 @app.route('/dashboard')
 def dashboard():
@@ -21,18 +23,6 @@ def dashboard():
 dns_servers = {
     "GOOGLE": "8.8.8.8",
     "OPEN-DNS": "208.67.222.222",
-    "RDNS-ITB-01": "186.211.32.10",
-    "RDNS-ITB-02": "200.202.111.10",
-    "RDNS-MRC-01": "186.211.32.11",
-    "RDNS-MRC-02": "200.202.111.11",
-    "RDNS-NIT-01": "186.211.32.12",
-    "RDNS-NIT-02": "200.202.111.12",
-    "RDNS01": "186.211.32.58",
-    "RDNS02": "186.211.32.98",
-    "RDNS03": "186.211.32.59",
-    "RDNS04": "186.211.32.56",
-    "RDNS05": "200.202.111.58",
-    "RDNS06": "200.202.111.98",
 }
 
 @app.route('/dashboard', methods=['POST','GET'])

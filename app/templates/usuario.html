@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="static/css/usuario.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <title>Sistemas-TI</title>
+    </head>
+    <body>
+<!-- ########################################################################################################################################## -->
+<!-- BARRA LATERAL DE INFORMAÇÕES DO USUARIO E MENU -->
+        <section id="navbar">
+            <nav class="container navbar">
+                <div class="logo">
+                    <img src="static/logo-GLPI-250-black.png" alt="">
+                </div>
+                <div>
+                    <ul id="menu">
+                        <li><a href="dashboard"><i class="bi bi-house-door-fill"></i>Início</a></li>
+                        <li><a href="busca"><i class="bi bi-person-lines-fill"></i></i>Consultar Usuário</a></li>
+                        <li>
+                            <i class="bi bi-list navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation"></i>
+                        </li>
+                    </ul>
+                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+                                <i class="bi bi-person-fill"></i>
+                                Dados do usuário
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <br>
+                        <div class="painel">
+                            <ul>
+                                <li>
+                                    <span>Usuário:</span>
+                                    <p>
+                                        {{ session['userName'] }}
+                                    </p>
+                                </li>
+                                <li>
+                                    <span>Nome:</span>
+                                    <p>
+                                        {{ session['displayName'] }}
+                                    </p>
+                                </li>
+                                <li>
+                                    <span>Função:</span>
+                                    <p>
+                                        {{ session['description'] }}
+                                    </p>
+                                </li>
+                                <li>
+                                    <span>Email:</span>
+                                    <p>
+                                        {{ session['mail'] }}
+                                    </p>
+                                </li>
+                                <li>
+                                    <span>Domínio:</span>
+                                    <p>
+                                        {{ session['domain'] }}
+                                    </p>
+                                </li>
+                                <li>
+                                    <span>Membro de:</span>
+                                    <p>
+                                        {% for group in session['groupps'] %}
+                                            <label class="grupo">{{ group }}</label>
+                                        {% endfor %}
+                                    </p>
+                                </li>
+                            </ul>
+                            <br>
+                            <div class="exit">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="logout">
+                                        <i class="bi bi-box-arrow-right"></i>
+                                        <a href="{{ url_for('logout') }}">
+                                            Encerrar sessão 
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </section>
+        <section id="bar">
+            <div class="container banner">
+                <div id="user">
+                    <h1><i class="bi bi-person-badge-fill"> </i> {{ username }}</h1>
+                </div>
+            </div>
+        </section>
+        <section id="card">
+            <div class="container" id="info">
+                <form action="" method="post">
+                    <label>Nome completo:</label>
+                    <p><input type="text" value="{{ display_name }}" class="form-control" disabled></p>
+    
+                    <label>Descrição:</label>
+                    <p><input type="text" value="{{ description }}" class="form-control" disabled></p>
+    
+                    <label>Email:</label>
+                    <p><input type="text" value="{{ email }}" class="form-control" disabled></p>
+    
+                    <label>Membro de:</label>
+                    <ul>
+                        {% for group in groups %}
+                        <li>{{ group }}</li>
+                        {% endfor %}
+                    </ul>
+                    <br>
+                    <!-- Modal -->
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <h2>Alterando usuário {{ username }}</h2>
+                            <p>Tem certeza que deseja alterar informações deste usuário?</p>
+                            <div id="botaoModal">
+                                <button class="btn btn-success" id="confirmBtn" type="submit">Confirmar</button>
+                                <button class="btn btn-danger" id="cancelBtn">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fim Modal -->
+                    <!-- Modal -->
+                    <div id="myModalReset" class="modal">
+                        <div class="modal-content">
+                            <h2>Resetando senha do usuário {{ username }}</h2>
+                            <p>Tem certeza que deseja resetar a senha deste usuário?</p>
+                            <div id="botaoModal">
+                                <button class="btn btn-success" id="confirmBtnReset" type="submit">Confirmar</button>
+                                <button class="btn btn-danger" id="cancelBtnReset">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fim Modal -->
+                </form>
+                <button class="btn btn-primary" id="editar">Editar</button>
+                <button class="btn btn-danger" id="resetar">Resetar senha</button>
+                <button class="btn btn-success" id="salvar">Salvar</button>
+            </div>
+        </section>
+        <script src="static/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    </body>
+</html>
